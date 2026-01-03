@@ -3,7 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProgramStudiController;
-use App\Http\Controllers\SawController;
+use App\Http\Controllers\SAWController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +14,9 @@ use App\Http\Controllers\SawController;
 //     return view('welcome');
 // });
 
-Route::get('/', [SawController::class, 'form'])->name('form');
-Route::get('/saw', [SawController::class, 'form'])->name('saw.form');
-Route::post('/saw', [SawController::class, 'calculate'])->name('saw.calculate');
+Route::get('/', [SAWController::class, 'form'])->name('form');
+Route::get('/saw', [SAWController::class, 'form'])->name('saw.form');
+Route::post('/saw', [SAWController::class, 'calculate'])->name('saw.calculate');
 
 /*
 |--------------------------------------------------------------------------
