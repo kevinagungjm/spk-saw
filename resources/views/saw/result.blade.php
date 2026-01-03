@@ -41,7 +41,7 @@
                     <button 
                         class="btn btn-sm btn-info"
                         data-bs-toggle="modal"
-                        data-bs-target="#modal{{ $i }}">
+                        data-bs-target="#modal{{ $r['id'] }}">
                         Detail Prodi
                     </button>
                 </td>
@@ -74,7 +74,7 @@
 
 <!-- MODAL DETAIL PRODI -->
 @foreach($prodis as $index => $p)
-<div class="modal fade" id="modal{{ $index }}" tabindex="-1">
+<div class="modal fade" id="modal{{ $p->id }}" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

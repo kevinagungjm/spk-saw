@@ -47,7 +47,7 @@ class SawController extends Controller
 
         $ranking = [];
         $logs = [];
-
+        // dump($min_ukt);
         foreach ($prodis as $prodi) {
 
             // 6. Normalisasi SAW
@@ -60,7 +60,7 @@ class SawController extends Controller
            $n_ukt = ($prodi->ukt_max > 0 && $min_ukt > 0)
                 ? $min_ukt / $prodi->ukt_max
                 : 0;
-
+            // dump($n_ukt,$n_akreditasi, $n_s2, $n_s3, $n_mhs, json_decode($prodi));
             // 7. Hitung nilai preferensi SAW
             $score =
                 ($n_akreditasi * $bobot['akreditasi']) +
@@ -71,12 +71,14 @@ class SawController extends Controller
 
             // 8. Simpan ranking
             $ranking[] = [
+                'id' => $prodi->id,
                 'nama_prodi' => $prodi->nama_prodi,
                 'nilai_saw' => round($score, 4),
             ];
-
+            // dump($prodi->nama_prodi, $score);
             // 9. Log perhitungan (untuk transparansi)
             $logs[] = [
+                'id' => $prodi->id,
                 'nama_prodi' => $prodi->nama_prodi,
                 'detail' => [
                     'Akreditasi' => round($n_akreditasi, 4),
@@ -91,7 +93,7 @@ class SawController extends Controller
 
         // 10. Urutkan ranking (DESC)
         usort($ranking, fn($a, $b) => $b['nilai_saw'] <=> $a['nilai_saw']);
-
+        // dd($ranking);
         return view('saw.result', compact(
             'ranking',
             'bobot',

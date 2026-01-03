@@ -10,10 +10,11 @@ use App\Http\Controllers\SawController;
 | Public
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [SawController::class, 'form'])->name('form');
 Route::get('/saw', [SawController::class, 'form'])->name('saw.form');
 Route::post('/saw', [SawController::class, 'calculate'])->name('saw.calculate');
 
